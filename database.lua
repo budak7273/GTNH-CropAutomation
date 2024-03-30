@@ -19,10 +19,11 @@ end
 
 
 local function scanFarm()
+    print('Scanning farm...')
     for slot=1, config.workingFarmArea, 2 do
         gps.go(posUtil.workingSlotToPos(slot))
         local crop = scanner.scan()
-            farm[slot] = crop
+        farm[slot] = crop
     end
 end
 
