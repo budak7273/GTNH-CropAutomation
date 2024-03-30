@@ -1,8 +1,10 @@
-# Introduction
+# GTNH-CropAutomation
+
+## Introduction
 
 These Open Computers (OC) scripts will automatically tier-up, stat-up, and spread (duplicate) IC2 crops for you. OC is a very powerful yet complicated mod using custom scripts, but fear not. I have made everything here as straightforward as possible to help you get your crop bot running in no time without any prior knowledge of OC.
 
-# Bare Minimum Components
+## Bare Minimum Components
 
 Obtaining these components will require access to EV circuits and epoxid (mid-late HV). It is possible to save some resources by not including the internet card, but that will require manually copying and pasting the code from GitHub which is NOT recommended for multiple reasons. Both inventory upgrades are necessary.
 
@@ -25,9 +27,9 @@ Obtaining these components will require access to EV circuits and epoxid (mid-la
 
 ![Robot Components](media/Robot_Components.png?)
 
-Lastly, you need a Transvector Binder and Transvector Dislocator which requires some progression in Thaumcraft. Neither are very difficult to craft even if you have yet to start Thaumcraft. In the thaumonomicon, Transvector Dislocator can be found under "Thaumic Tinkerer" which requires both Transvector Interface and Smokey Quartz on the same tab. You will also need to complete research on Mirror Magic under "Artifice." For more information regarding Thaumcraft research, visit https://gtnh.miraheze.org/wiki/Thaumcraft_Research_Cheatsheet.
+Lastly, you need a Transvector Binder and Transvector Dislocator which requires some progression in Thaumcraft. Neither are very difficult to craft even if you have yet to start Thaumcraft. In the Thaumonomicon, Transvector Dislocator can be found under "Thaumic Tinkerer" which requires both Transvector Interface and Smokey Quartz on the same tab. You will also need to complete research on Mirror Magic under "Artifice." For more information regarding Thaumcraft research, visit <https://gtnh.miraheze.org/wiki/Thaumcraft_Research_Cheatsheet>.
 
-# Building the Robot
+## Building the Robot
 
 1) Insert the computer case into the OC Electronics Assembler which can be powered directly by any GT cable.
 2) Shift-click all of the components into the computer case except the OpenOS floppy disk
@@ -48,7 +50,7 @@ Lastly, you need a Transvector Binder and Transvector Dislocator which requires 
 
 ![Robot Inventory](media/Robot_Inventory.png?)
 
-# Building the Farms
+## Building the Farms
 
 Find a location with good environmental stats. It is recommended to set everything up in a Jungle or Swamp biome at Y=130 as that will give you the highest humidity and air quality stats. If not, crops run the risk of randomly dying and leaving the farms susceptible to weeds. This is most easily done in a personal dimension which you earn as a quest reward from reaching the moon. Do not place any solid blocks above the farm as that will reduce the air quality. All of the machines on the surface are waterproof so do not worry about the rain. Use vanilla dirt because that will allow you to grow crops that require a particular block underneath, and boost the nutrient stat of your crops. The whole farm can easily fit into a single chunk for easy chunk loading.
 
@@ -66,11 +68,11 @@ The starting crops must be placed manually in the checkerboard pattern seen in t
 
 ![Farm Bottom](media/Farm_Bottom.png?)
 
-Underneath the farm, you can see that there are three additional dirt blocks below each farmland, each of which add to the nutrient stat of the crop above it. For crops requiring a block underneath, that should be placed at the bottom. In this case, I have diareed planted on top which means I have one farmland --> two dirt --> one diamond block underneath each one. I do not have diamond blocks underneath the working farm because the diareed does not need to be fully grown in order to spread. 
+Underneath the farm, you can see that there are three additional dirt blocks below each farmland, each of which add to the nutrient stat of the crop above it. For crops requiring a block underneath, that should be placed at the bottom. In this case, I have diareed planted on top which means I have one farmland --> two dirt --> one diamond block underneath each one. I do not have diamond blocks underneath the working farm because the diareed does not need to be fully grown in order to spread.
 
 For power, I am using an HV gas turbine and a super tank with some benzene (no transformer needed). This is a little overkill, but the important part is that the charger is always at 100% charging speed which you can see by hovering over it. A set-up such as this will last forever with a few hundred thousand benzene since both machines require very little EU/t. Lastly, a reservoir feeds water into the crop-matron automatically after right-clicking it with a wrench.
 
-# Running the Programs
+## Running the Programs
 
 The first program **autoTier** will automatically tier-up your crops until the max breeding round is reached (configurable), the storage farm is full, or ALL crops meet the specified tier threshold which defaults to 13. Note that unrecognized crops will be moved to the storage farm first before replacing any of the lower tier crops in the working farm. Statting-up crops during this program is also a configurable option, but that will slow down the process significantly. To run, simply enter:
 
@@ -90,27 +92,27 @@ Lastly, these programs can be chained together which may be helpful if you have 
 
 To pause the robot during any of these programs, just turn off the OC Charger. The robot will not resume until it is fully charged. Also, changing anything in the config requires you to restart your robot.
 
-# Troubleshooting
+## Troubleshooting
 
 1) The Transvector Dislocator is randomly moved to somewhere on the working farm
 
-_Solution: Cover your water sources. Otherwise the order of the transvector binder will get messed up and teleport the dislocator instead of a crop._
+    _Solution: Cover your water sources. Otherwise the order of the transvector binder will get messed up and teleport the dislocator instead of a crop._
 
 2) The Robot is randomly moved to somewhere on the working farm
 
-_Solution: Check the orientation of the transvector dislocator. This can only happen if the dislocator is facing up instead of forward._
+    _Solution: Check the orientation of the transvector dislocator. This can only happen if the dislocator is facing up instead of forward._
 
 3) The Robot is destroying all of the crops that were manually placed
 
-_Solution: Either the resistance or growth stats of the parent crops are too high. By default, anything above 2 resistance or 21 growth is treated like a weed and will be removed. These values, including the maximum stats of child crops, are all easily changed in the config._
+    _Solution: Either the resistance or growth stats of the parent crops are too high. By default, anything above 2 resistance or 21 growth is treated like a weed and will be removed. These values, including the maximum stats of child crops, are all easily changed in the config._
 
 4) Crops are randomly dying OR the farms are being overrun with weeds OR there are single crop sticks where there should be double
 
-_Solution: Possibly change location. Crops have minimum environmental stat requirements (nutrients, humidity, air quality) and going below this threshold will kill the crop and leave an empty crop stick behind that is susceptible to growing weeds and overtaking the farms._
+    _Solution: Possibly change location. Crops have minimum environmental stat requirements (nutrients, humidity, air quality) and going below this threshold will kill the crop and leave an empty crop stick behind that is susceptible to growing weeds and overtaking the farms._
 
 ## Recommended Crops
 
-For starters, I recommend statting-up and spreading the following crops because their outputs are useful and not completely overshadowed by bees. Note that every crop has a higher chance of being discovered with specific parent combinations, but it is often easier to discover a crop from crossbreeding at the same tier. For example, diareed apparently has the highest chance of being discovered when the parents are oilberry and bobsyeruncleranks, BUT I recommend just running autoTier with all Tier 12 crops (or autoSpread with keepMutations on in the config). Crops that require a particular block underneath do not need to be fully grown in order to spread. For a full list of crops and their requirements, visit https://gtnh.miraheze.org/wiki/IC2_Crops_List.
+For starters, I recommend statting-up and spreading the following crops because their outputs are useful and not completely overshadowed by bees. Note that every crop has a higher chance of being discovered with specific parent combinations, but it is often easier to discover a crop from crossbreeding at the same tier. For example, diareed apparently has the highest chance of being discovered when the parents are oilberry and bobsyeruncleranks, BUT I recommend just running autoTier with all Tier 12 crops (or autoSpread with keepMutations on in the config). Crops that require a particular block underneath do not need to be fully grown in order to spread. For a full list of crops and their requirements, visit <https://gtnh.miraheze.org/wiki/IC2_Crops_List>.
 
 - **Stickreed** for sticky resin and discovering/breeding with other crops
 - **Spruce Bonsai** for all of your benzene and power needs
