@@ -96,7 +96,7 @@ To pause the robot during any of these programs, just turn off the OC Charger. T
 
 _Solution: Cover your water sources. Otherwise the order of the transvector binder will get messed up and teleport the dislocator instead of a crop._
 
-4) The Robot is randomly moved to somewhere on the working farm
+2) The Robot is randomly moved to somewhere on the working farm
 
 _Solution: Check the orientation of the transvector dislocator. This can only happen if the dislocator is facing up instead of forward._
 
