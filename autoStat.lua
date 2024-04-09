@@ -104,7 +104,7 @@ local function statOnce()
 
         -- Terminal Condition
         if lowestStat >= config.autoStatThreshold then
-            print('autoStat: Minimum Stat Threshold Reached!')
+            print('autoStat: Minimum Stat Threshold of ' .. config.autoStatThreshold .. ' Reached!')
             return false
         end
 
