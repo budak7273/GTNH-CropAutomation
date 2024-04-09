@@ -31,10 +31,14 @@ local config = {
     -- Maximum Resistance for crops on the storage farm
     storageMaxResistance = 2,
 
-    -- Minimum Charge Level
-    needChargeLevel = 0.2,
     -- Max breed round before termination of autoTier.
     maxBreedRound = 1000,
+    -- Minimum Charge Level
+    needChargeLevel = 0.2,
+    -- Charging time warning message threshold
+    -- 0.5 * this = # of seconds before the robot prints a message about charging taking longer than expected
+    chargeTimeWarning = 20,
+
 
     -- =========== DO NOT CHANGE ===========
 

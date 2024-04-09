@@ -31,8 +31,6 @@ local function fullInventory()
     return true
 end
 
-local CHARGE_TIME_WARNING = 5
-
 local function charge()
     gps.go(config.chargerPos)
     gps.turnTo(1)
@@ -42,7 +40,7 @@ local function charge()
     repeat
         os.sleep(0.5)
         chargeCounter = chargeCounter + 1
-        if chargeCounter > CHARGE_TIME_WARNING and not hasPrintedWarning then
+        if chargeCounter > config.chargeTimeWarning and not hasPrintedWarning then
             print("Charging taking longer than expected. Is the charger powered and given a redstone signal?")
             hasPrintedWarning = true
         end
