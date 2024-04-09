@@ -1,5 +1,5 @@
 local config = {
-    -- NOTE: EACH CONFIG SHOULD END WITH A COMMA
+    -- NOTE: EACH CONFIG LINE SHOULD END WITH A COMMA
 
     -- Side Length of Storage Farm
     storageFarmSize = 9,
@@ -39,6 +39,16 @@ local config = {
     -- 0.5 * this = # of seconds before the robot prints a message about charging taking longer than expected
     chargeTimeWarning = 20,
 
+    -- ==== Troubleshooting/Debugging Options ====
+
+    -- Print reasons explaining why a crop was removed, turn this off once the system is working as you expect
+    explainCropRemoval = false,
+    -- When true, if all crop present in a "parent" position would be removed,
+    -- the robot will not remove it unless it is a literal weed/grass crop
+    -- Use this to test your config without risk of destroying your parent crops.
+    -- Remember that "child" position crops are not affected by this setting
+    -- Beware that this could allow plants with dangerous growth stats to remain in the farm!
+    debugDoNotRemoveAnyNonPureWeedParents = false,
 
     -- =========== DO NOT CHANGE ===========
 
@@ -60,7 +70,7 @@ local config = {
     -- The slot for crop sticks
     stickSlot = -2,
     -- The slot which the robot will stop storing items
-    storageStopSlot = -3
+    storageStopSlot = -3,
 }
 
 config.workingFarmArea = config.workingFarmSize^2

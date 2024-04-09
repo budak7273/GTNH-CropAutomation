@@ -36,21 +36,48 @@ local function scan()
 end
 
 
-local function isWeed(crop, farm)
+-- Check if a crop is considered a weed, and if so, also return the reason why.
+-- Returns: shouldBreak, reason, isPureWeed
+local function weedLogic(crop, farm)
+    local maxGrowth
+    local maxResist
     if farm == 'working' then
-        return crop.name == 'weed' or
-        crop.name == 'Grass' or
-        crop.gr > config.workingMaxGrowth or
-        crop.re > config.workingMaxResistance or
-        (crop.name == 'venomilia' and crop.gr > 7)
-
+        maxGrowth = config.workingMaxGrowth
+        maxResist = config.workingMaxResistance
     elseif farm == 'storage' then
-        return crop.name == 'weed' or
-        crop.name == 'Grass' or
-        crop.gr > config.storageMaxGrowth or
-        crop.re > config.storageMaxResistance or
-        (crop.name == 'venomilia' and crop.gr > 7)
+        maxGrowth = config.storageMaxGrowth
+        maxResist = config.storageMaxResistance
     end
+
+    if crop.name == 'weed' or crop.name == 'Grass' then
+        return true, "isPureWeed", true
+    elseif crop.name == 'venomilia' and crop.gr > 7 then
+        return true, "isDangerousVenomilia", false
+    elseif crop.gr > maxGrowth then
+        return true, string.format("%s_isOverMaxGrowthOf_%s", crop.gr, maxGrowth), false
+    elseif crop.re > maxResist then
+        return true, string.format("%s_isOverMaxResistOf_%s", crop.re, maxResist), false
+    end
+end
+
+
+local function isWeed(crop, farm)
+    local shouldBreak, reason, isPureWeed = weedLogic(crop, farm)
+
+    -- Always remove pure weeds with no logging
+    if isPureWeed then
+        return true
+    end
+
+    if shouldBreak then
+        if config.explainCropRemoval then
+            print("Removing " .. farm .. " plant: " .. crop.name .. " because " .. reason)
+        end
+        if config.debugDoNotRemoveAnyNonPureWeedParents == false then
+            return true
+        end
+    end
+    return false
 end
 
 
