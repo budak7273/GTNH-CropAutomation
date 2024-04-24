@@ -46,7 +46,7 @@ Lastly, you need a Transvector Binder and Transvector Dislocator which requires 
 
         edit config.lua
 
-10) Place the Spade and Transvector Binder into the last and second to last slot of the robot, respectively. Crop sticks will go in the third, but it is not required to put them in yourself. An axe or mattock can also be placed into the tool slot of the robot to speed up destroying crops (optional). See image below.
+10) Place the Spade and Transvector Binder into the last and second to last slot of the robot, respectively. Crop sticks will go in the third, but it is not required to put them in yourself. An axe or mattock can also be placed into the tool slot of the robot to speed up destroying crops (optional). Note that as of GTNH 2.5.1, a GregTech axe is somehow not a valid cropstick-breaking tool and will result in the robot being incapable of breaking cropsticks for the cleanUp task. See image below.
 
 ![Robot Inventory](media/Robot_Inventory.png?)
 
@@ -109,6 +109,10 @@ To pause the robot during any of these programs, just turn off the OC Charger. T
 4) Crops are randomly dying OR the farms are being overrun with weeds OR there are single crop sticks where there should be double
 
     _Solution: Possibly change location. Crops have minimum environmental stat requirements (nutrients, humidity, air quality) and going below this threshold will kill the crop and leave an empty crop stick behind that is susceptible to growing weeds and overtaking the farms._
+
+5) The cleanUp option is set to true but the robot is still leaving open crop sticks after finishing a task
+
+    _Solution: As of GTNH 2.5.1, a GregTech axe is somehow not a valid cropstick-breaking tool and will result in the robot being incapable of breaking cropsticks. Take away its axe tool or give it a different kind._
 
 ## Recommended Crops
 
